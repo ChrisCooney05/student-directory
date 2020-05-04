@@ -1,3 +1,6 @@
+student_count = 11
+#Variable set for the number of students.
+
 puts "The students of Villains Academy"
 puts "-------------"
 puts "Dr. Hannibal Lecter"
@@ -11,6 +14,5 @@ puts "Freddy Krueger"
 puts "The Joker"
 puts "Joffrey Baratheon"
 puts "Norman Bates"
-print "Overall, we have " #Prnt will not start a new line after string
-print "11 "
-puts "great students."
+puts "Overall, we have #{student_count} great students"
+#using string interpolation we can refactor the code so it looks cleaner.
