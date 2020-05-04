@@ -11,3 +11,6 @@ puts "Freddy Krueger"
 puts "The Joker"
 puts "Joffrey Baratheon"
 puts "Norman Bates"
+print "Overall, we have " #Prnt will not start a new line after string
+print "11 "
+puts "great students."
