@@ -1,17 +1,17 @@
-#We can use a hash to add extra infomation to each student, making it easier to call.
+
 
 students = [
-  {name: "Dr. Hannibal Lecter", cohort: :april},
-  {name: "Darth Vader", cohort: :april},
-  {name: "Nurse Ratched", cohort: :april},
-  {name: "Michael Corleone", cohort: :april},
-  {name: "Alex DeLarge", cohort: :april},
-  {name: "The Wicked Witch of the West", cohort: :april},
-  {name: "Terminator", cohort: :april},
-  {name: "Freddy Krueger", cohort: :april},
-  {name: "The Joker", cohort: :april},
-  {name: "Joffrey Baratheon", cohort: :april},
-  {name: "Norman Bates", cohort: :april},
+  "Dr. Hannibal Lecter",
+  "Darth Vader",
+  "Nurse Ratched",
+  "Michael Corleone",
+  "Alex DeLarge",
+  "The Wicked Witch of the West",
+  "Terminator",
+  "Freddy Krueger",
+  "The Joker",
+  "Joffrey Baratheon",
+  "Norman Bates",
 ]
 
 def print_header
@@ -20,9 +20,10 @@ def print_header
 end
 
 #instead of printing out each student we can use a loop to itirate over the array.
+#Using the each_with_index method we can also include a student number.
 def print(names)
-  names.each do |name|
-    puts "#{name[:name]} (#{name[:cohort]} cohort)"
+  names.each_with_index do |name, index|
+    puts "#{index+1}. #{name}"
   end
 end
 
