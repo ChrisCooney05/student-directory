@@ -20,12 +20,13 @@ def print_header
 end
 
 #instead of printing out each student we can use a loop to itirate over the array.
-#Using the each_with_index method we can also include a student number.
+#updated to only print names that beguin with T.
 def print(names)
-  names.each_with_index do |name, index|
-    puts "#{index+1}. #{name}"
+  names.each do |name|
+    puts "#{name}" if name.start_with?("T")
   end
 end
+
 
 #using string interpolation we can refactor the code so it looks cleaner.
 #we can use the .count() method to get the number of student.
