@@ -21,7 +21,7 @@ end
 
 def print(names)
   names.each do |name|
-    puts "#{name[:name]} (#{name[:cohort]} cohort). Height #{name[:height]}"
+    puts "#{name[:name]} (#{name[:cohort]} cohort). Height #{name[:height]}".center(120)
   end
 end
 
