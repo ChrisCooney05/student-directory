@@ -30,18 +30,19 @@ def input_students
 end
 
 def print_header
+  puts "What cohort would you like to see?"
+  @cohort = gets.delete!("\n")
   puts "The students of my cohort at Makers"
   puts "-------------"
 end
 
 #instead of printing out each student we can use a loop to itirate over the array.
 def print(names)
-  puts "What cohort would you like to see?"
-  cohort = gets.delete!("\n")
   names.map do |name|
-    puts "#{name[:name]} (cohort: #{name[:cohort]})" if name[:cohort] == cohort.to_sym
+    puts "#{name[:name]} (cohort: #{name[:cohort]})" if name[:cohort] == @cohort.to_sym
   end
 end
+
 
 
 #using string interpolation we can refactor the code so it looks cleaner.
@@ -52,6 +53,10 @@ end
 
 #we need to call the methods with any relevent arguments to get the results.
 students = input_students
+if students.length < 1
+  puts "You need to add some students"
+  students = input_students()
+end
 print_header
 print(students)
 print_footer(students)
