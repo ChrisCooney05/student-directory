@@ -11,7 +11,11 @@ def input_students
   students = []
   while !name.empty?
     students << {name: name, cohort: cohort.to_sym}
-    puts "Now we have #{students.count} students"
+    if students.length == 1
+      puts "Now we have #{students.count} student"
+    else
+      puts "Now we have #{students.count} students"
+    end
     name = gets.chomp
     if name.empty?
       break
