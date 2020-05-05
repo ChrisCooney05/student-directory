@@ -32,10 +32,13 @@ end
 
 #instead of printing out each student we can use a loop to itirate over the array.
 def print(names)
-  names.each do |name|
-    puts "#{name[:name]} (cohort: #{name[:cohort]})"
+  puts "What cohort would you like to see?"
+  cohort = gets.chomp
+  names.map do |name|
+    puts "#{name[:name]} (cohort: #{name[:cohort]})" if name[:cohort] == cohort.to_sym
   end
 end
+
 
 #using string interpolation we can refactor the code so it looks cleaner.
 #we can use the .count() method to get the number of student.
