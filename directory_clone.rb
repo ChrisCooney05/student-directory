@@ -1,17 +1,17 @@
 
 
 students = [
-  "Dr. Hannibal Lecter",
-  "Darth Vader",
-  "Nurse Ratched",
-  "Michael Corleone",
-  "Alex DeLarge",
-  "The Wicked Witch of the West",
-  "Terminator",
-  "Freddy Krueger",
-  "The Joker",
-  "Joffrey Baratheon",
-  "Norman Bates",
+  {name: "Dr. Hannibal Lecter", cohort: :April, height: "5,11"},
+  {name: "Darth Vader", cohort: :April, height: "5,10"},
+  {name: "Nurse Ratched", cohort: :April, height: "5,8"},
+  {name: "Michael Corleone", cohort: :April, height: "5,9"},
+  {name: "Alex DeLarge", cohort: :April, height: "6"},
+  {name: "The Wicked Witch of the West", cohort: :April, height: "5,10"},
+  {name: "Terminator", cohort: :April, height: "6,4"},
+  {name: "Freddy Krueger", cohort: :April, height: "5,11"},
+  {name: "The Joker", cohort: :April, height: "5,9"},
+  {name: "Joffrey Baratheon", cohort: :April, height: "5,7"},
+  {name: "Norman Bates", cohort: :April, height: "5,10"},
 ]
 
 def print_header
@@ -19,12 +19,9 @@ def print_header
   puts "-------------"
 end
 
-#removed .each and changed to a while loop. included ability to add number before student name.
 def print(names)
-  index = 0
-  while names.length > index
-    puts "#{index+1} " + names[index]
-    index += 1
+  names.each do |name|
+    puts "#{name[:name]} (#{name[:cohort]} cohort). Height #{name[:height]}"
   end
 end
 
