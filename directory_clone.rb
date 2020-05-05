@@ -1,9 +1,9 @@
 def input_students
   puts "Please enter the names of the students"
   puts "to finish, please hit return twice"
-  name = gets.chomp
+  name = gets.delete!("\n")
   puts "Please let me know what cohort they are on"
-  cohort = gets.chomp
+  cohort = gets.delete!("\n")
   if cohort.empty?
     cohort = "Not suplied"
   end
@@ -16,12 +16,12 @@ def input_students
     else
       puts "Now we have #{students.count} students"
     end
-    name = gets.chomp
+    name = gets.delete!("\n")
     if name.empty?
       break
     end
 
-    cohort = gets.chomp
+    cohort = gets.delete!("\n")
     if cohort.empty?
       cohort = "Not suplied"
     end
@@ -37,7 +37,7 @@ end
 #instead of printing out each student we can use a loop to itirate over the array.
 def print(names)
   puts "What cohort would you like to see?"
-  cohort = gets.chomp
+  cohort = gets.delete!("\n")
   names.map do |name|
     puts "#{name[:name]} (cohort: #{name[:cohort]})" if name[:cohort] == cohort.to_sym
   end
