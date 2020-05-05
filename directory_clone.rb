@@ -20,10 +20,10 @@ def print_header
 end
 
 #instead of printing out each student we can use a loop to itirate over the array.
-#updated to only print names that beguin with T.
+#updated to only print names that have less than 12 characters.
 def print(names)
   names.each do |name|
-    puts "#{name}" if name.start_with?("T")
+    puts "#{name}" if name.length < 12
   end
 end
 
