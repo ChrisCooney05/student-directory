@@ -42,6 +42,7 @@ def print_menu
   puts "2. Show the students"
   puts "3. Save list to students.csv"
   puts "4. Load list from students.csv"
+  puts "5. Show current file name"
   puts "9. Exit"
 end
 
@@ -65,6 +66,9 @@ def process(selection)
     when "4"
       puts "Loading student list"
       load_students
+    when "5"
+      print "Current file name is: "
+      file_name
     when "9"
       puts "Have a good day"
       exit
@@ -127,6 +131,10 @@ def try_load_students
     puts "Sorry, #{filename} does not exist"
     exit
   end
+end
+
+def file_name
+  puts $0
 end
 
 try_load_students
