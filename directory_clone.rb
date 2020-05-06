@@ -1,3 +1,5 @@
+require 'csv'
+
 @students = []
 
 def input_students
@@ -79,23 +81,41 @@ def interactive_menu
 end
 
 def save_students
-  File.open("students.csv", "w") do |file| # open the file for writing. csv - comma seperated format
+  CSV.open(@filename, "w") do |file| # open the file for writing. csv - comma seperated format
     @students.each do |student|
-      student_data = [student[:name], student[:cohort]]
-      csv_line = student_data.join(",")
-      file.puts csv_line
+      file << [student[:name], student[:cohort]]
     end
-  end 
+  end
 end
 
+# def save_students
+#   File.open("students.csv", "w") do |file| # open the file for writing. csv - comma seperated format
+#     @students.each do |student|
+#       student_data = [student[:name], student[:cohort]]
+#       csv_line = student_data.join(",")
+#       file.puts csv_line
+#     end
+#   end
+# end
+
 def load_students(filename="students.csv")
-  File.readlines(filename).each do |line| #no need to open and close file
-    name, cohort = line.chomp.split(",")
+  @filename = filename
+  CSV.foreach(@filename) do |line| #no need to open and close file
+    name, cohort = line[0], line[1]
     #name gets first part of the split array, cohort second (parallel assignment)
     @students << {name: name, cohort: cohort.to_sym}
   end
   puts "Loaded #{@students.count} students from #{filename}"
 end
+
+# def load_students(filename="students.csv")
+#   File.readlines(filename).each do |line| #no need to open and close file
+#     name, cohort = line.chomp.split(",")
+#     #name gets first part of the split array, cohort second (parallel assignment)
+#     @students << {name: name, cohort: cohort.to_sym}
+#   end
+#   puts "Loaded #{@students.count} students from #{filename}"
+# end
 
 def try_load_students
   filename = ARGV.first #first argument from the command line
