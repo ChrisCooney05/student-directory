@@ -43,8 +43,6 @@ def print(names)
   end
 end
 
-
-
 #using string interpolation we can refactor the code so it looks cleaner.
 #we can use the .count() method to get the number of student.
 def print_footer(names)
