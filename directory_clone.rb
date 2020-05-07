@@ -22,20 +22,15 @@ def print_header
   puts "-------------"
 end
 
-#instead of printing out each student we can use a loop to itirate over the array.
 def print_students
   @students.each do |name|
     puts "#{name[:name]} (#{name[:cohort]} cohort)"
   end
 end
 
-#using string interpolation we can refactor the code so it looks cleaner.
-#we can use the .count() method to get the number of student.
 def print_footer
   puts "Overall, we have #{@students.count} great students"
 end
-
-#we need to call the methods with any relevent arguments to get the results.
 
 def print_menu
   puts "1. Input the students"
@@ -85,47 +80,28 @@ def interactive_menu
 end
 
 def save_students
-  CSV.open(@filename, "w") do |file| # open the file for writing. csv - comma seperated format
+  CSV.open(@filename, "w") do |file|
     @students.each do |student|
       file << [student[:name], student[:cohort]]
     end
   end
 end
 
-# def save_students
-#   File.open("students.csv", "w") do |file| # open the file for writing. csv - comma seperated format
-#     @students.each do |student|
-#       student_data = [student[:name], student[:cohort]]
-#       csv_line = student_data.join(",")
-#       file.puts csv_line
-#     end
-#   end
-# end
 
 def load_students(filename="students.csv")
   @filename = filename
-  CSV.foreach(@filename) do |line| #no need to open and close file
+  CSV.foreach(@filename) do |line|
     name, cohort = line[0], line[1]
-    #name gets first part of the split array, cohort second (parallel assignment)
     @students << {name: name, cohort: cohort.to_sym}
   end
   puts "Loaded #{@students.count} students from #{filename}"
 end
 
-# def load_students(filename="students.csv")
-#   File.readlines(filename).each do |line| #no need to open and close file
-#     name, cohort = line.chomp.split(",")
-#     #name gets first part of the split array, cohort second (parallel assignment)
-#     @students << {name: name, cohort: cohort.to_sym}
-#   end
-#   puts "Loaded #{@students.count} students from #{filename}"
-# end
-
 def try_load_students
-  filename = ARGV.first #first argument from the command line
+  filename = ARGV.first
   if filename.nil?
     load_students
-  elsif File.exists?(filename) #if it exists
+  elsif File.exists?(filename)
     load_students(filename)
   else
     puts "Sorry, #{filename} does not exist"
