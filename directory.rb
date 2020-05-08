@@ -71,23 +71,23 @@ def interactive_menu
 end
 
 def save_students
-  file = File.open("students.csv", "w") # open the file for writing. csv - comma seperated format
-  @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
+  File.open(@filename, "w") do |file| # open the file for writing. csv - comma seperated format
+    @students.each do |student|
+      student_data = [student[:name], student[:cohort]]
+      csv_line = student_data.join(",")
+      file.puts csv_line
+    end
   end
-  file.close
 end
 
 def load_students(filename="students.csv")
-  file = File.open(filename, "r")
-  file.readlines.each do |line|
+  @filename = filename
+  File.readlines(@filename).each do |line| #no need to open and close file
     name, cohort = line.chomp.split(",")
     #name gets first part of the split array, cohort second (parallel assignment)
     @students << {name: name, cohort: cohort.to_sym}
   end
-  file.close
+  puts "Loaded #{@students.count} students from #{filename}"
 end
 
 def try_load_students
